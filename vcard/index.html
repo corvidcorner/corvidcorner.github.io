@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact QR Generator</title>
+    <meta name="description" content="Generate a contact QR code in your browser. Your data never leaves your device.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js" integrity="sha384-Dr98ddmUw2QkdCarNQ+OL7xLty7cSxgR0T7v1tq4UErS/qLV0132sBYTolRAFuOV" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -28,7 +29,7 @@
             box-sizing: border-box;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        h2 {
+        h1 {
             text-align: center;
             color: #ffffff;
             margin-top: 0;
@@ -131,7 +132,7 @@
 <body>
 
 <div class="container">
-    <h2>Contact QR</h2>
+    <h1>Contact QR</h1>
 
     <label for="name">Full Name</label>
     <input type="text" id="name" placeholder="Jane Doe" autocorrect="off" autocapitalize="words">
@@ -152,11 +153,11 @@
     </div>
 
     <div id="qrcode-container">
-        <canvas id="qr-canvas"></canvas>
+        <canvas id="qr-canvas" role="img" aria-label="Generated contact QR code"></canvas>
     </div>
 
     <div class="info-section">
-        <h3>Privacy & Security</h3>
+        <h3>Privacy &amp; Security</h3>
         <p><strong>Local Processing:</strong> Your data never leaves your device. The QR code is generated entirely within your browser.</p>
 
         <h3>How it Works</h3>
@@ -252,7 +253,7 @@
         fields.forEach(field => {
             const value = params.get(field);
             if (value) {
-                document.getElementById(field).value = decodeURIComponent(value);
+                document.getElementById(field).value = value;
                 hasParams = true;
             }
         });
